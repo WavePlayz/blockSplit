@@ -24,6 +24,6 @@ jobs:
     - name: Upload Release
       uses: ncipollo/release-action@v1
       with:
-        artifacts: 'BlockSplit#' + '${{ github.event.inputs.version }}' + '.mcpack'
+        artifacts: 'BlockSplit (${{ github.event.inputs.version }}).mcpack'
         tag: '${{ github.event.inputs.version }}'
         token: ${{ secrets.GITHUB_TOKEN }}
