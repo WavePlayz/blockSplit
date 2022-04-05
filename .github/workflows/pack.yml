@@ -13,4 +13,8 @@ jobs:
         type: 'zip'
         filename: 'BlockSplit.mcpack'
         exclusions: '*.git* /*node_modules/* .editorconfig'
-    
+    - name: Upload Release
+      uses: ncipollo/release-action@v1
+      with:
+        artifacts: "BlockSplit.mcpack"
+        token: ${{ secrets.GITHUB_TOKEN }}
