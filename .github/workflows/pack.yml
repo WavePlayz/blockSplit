@@ -1,5 +1,10 @@
 name: MCPACK
-on: [push]
+
+on:  
+  push:
+    tags:
+      - 'v*'
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -13,6 +18,11 @@ jobs:
         type: 'zip'
         filename: 'BlockSplit.mcpack'
         exclusions: '*.git* /*node_modules/* .editorconfig'
+
+    - name: Get the version
+      id: get_version
+      run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+    
     - name: Upload Release
       uses: ncipollo/release-action@v1
       with:
