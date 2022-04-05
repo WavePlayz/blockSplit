@@ -1,0 +1,30 @@
+{
+	"format_version": 2,
+	
+	"header": {
+		"name": "Block Split §7for beta§r",
+		"description": "v2.2 - 1.18.10.27 by WavePlayz\n Twitter: itsMrGhost Discord: WavePlayz#7915",
+		"uuid": "c36b1fe0-780a-421c-ad79-f76f82c92d8b",
+		"version": [0, 2, 2],
+		"developer" : "waveplayz",
+		"min_engine_version": [1, 18, 10 ]
+	},
+	
+	"modules": [
+		{
+			"description": "gametest-module",
+			"type": "javascript",
+			"uuid": "21534c8d-ec96-417a-9ff5-f900b3a73e88",
+			"version": [0, 0, 1],
+			"entry": "scripts/script.js"
+		}
+	],
+	
+	"dependencies": [
+		{
+			// Minecraft native module - needed to use the "mojang-minecraft" module
+			"uuid": "b26a4d4c-afdf-4690-88f8-931846312678",
+			"version": [0, 1, 0]
+		}
+	]
+}
