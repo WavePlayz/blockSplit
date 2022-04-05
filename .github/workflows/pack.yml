@@ -3,6 +3,8 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
     - uses: actions/checkout@master
     - name: Archive Release
@@ -11,4 +13,8 @@ jobs:
         type: 'zip'
         filename: 'BlockSplit.zip'
         exclusions: '*.git* /*node_modules/* .editorconfig'
-    
+    - name: Upload Release
+      uses: ncipollo/release-action@v1
+      with:
+        artifacts: "BlockSplit.zip"
+        token: ${{ secrets.GITHUB_TOKEN }}
