@@ -1,6 +1,6 @@
 // BlockSplit
 // WavePlayz
-// v2.2
+// v1.18.10.00-1.0.0-s
 
 import { world, MinecraftBlockTypes } from "mojang-minecraft"
 
