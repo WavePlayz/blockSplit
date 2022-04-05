@@ -1,84 +1,84 @@
 // BlockSplit
-// WavePlayz
-// v1.18.10.00-1.0.0-s
+// उदात्त द्वारा निर्मित
+// v1.18.10.00-s-0.1.0
 
-import { world, MinecraftBlockTypes } from "mojang-minecraft"
+import {
+	world, 
+	MinecraftBlockTypes
+} from "mojang-minecraft"
 
 
-let currentTick = 0
-world.events.tick.subscribe(eventData => currentTick++)
+// Inits
+const NAME = "BlockSplit"
+const VERSION = "1.18.10.00-s-0.1.0"
+const TAG = NAME + ":" + VERSION
 
 
-const cache = new Map()
+const info = (key, text) = console[key]?.(TAG + text);
 
-let foo = new Map();
 
-world.events.beforePistonActivate.subscribe(bpaEventData => {
-	try {
-	
-	const { isExpanding, piston } = bpaEventData
-	const { x, y, z } = piston.location
-	
-	bpaEventData.dimension.runCommand( "say " + bpaEventData.piston.attachedBlocks.length )
-	
-	const key = [ x, y, z ].join(" ")
-	
-	bpaEventData.piston.attachedBlocks.forEach(bl => {
-		let d = [
-		MinecraftBlockTypes.chest.id,
-		MinecraftBlockTypes.trappedChest.id,
-		MinecraftBlockTypes.furnace.id,
-		MinecraftBlockTypes.enderChest.id
-		]
-		
-		let b = bpaEventData.dimension.getBlock(bl)
-		
-		
-		
-		if ( !d.includes(b.id) ) return;
-		
-		if (!foo.has(key)) foo.set(key, []);
-		
-		let { x, y, z } = b.location
-		
-		foo.get(key).push( { x, y, z } )
-		
+// globals
+const events = world.events
+const pistonData = new Map()
+
+let वर्तमान०काल०गण = 0
+
+
+// helpers
+function परीक्षण (func) {
+	return function() {
 		try {
-		bpaEventData.dimension.runCommand(`clone ${x} ${y} ${z} ${x} ${y} ${z} ${x} ${y} ${z} replace move`)
-		bpaEventData.dimension.runCommand(`say ${x} ${y} ${z}`)
-		} catch(e) {
-console.warn(e)
+			func.apply(null, ...arguements)
+		} catch (error) {
+			let stack = error.stack
+			
+			info( "log", error )
+			info( "log", stack )
+			info( "warn", error )
+			info( "warn", stack )
+		}
+	}
 }
-	} )
+
+
+// main
+events
+	.tick
+	.subscribe( () => वर्तमान०काल०गण++ )
+
+events
+	.beforePistonActivate 
+	.subscribe( परीक्षण(onBeforePistonActivate) )
+
+function onBeforePistonActivate ( दत्तांशः ) {
+	const { isExpanding, piston } = दत्तांशः
 	
+	const { 
+		location: { x, y, z }, 
+		attachedBlocks 
+	} = piston
+	
+	const मूल = [ x, y, z ].join(" ")
 	
 	
 	if (isExpanding) {
-		let tick = currentTick 
-		let hasBlocks = piston.attachedBlocks.length
+		let काल = वर्तमान०काल०गण
+		let शिला०युक्त = attachedBlocks.length
 		
-		cache.set( key, { tick, hasBlocks } )
+		pistonData.set( मूल, { काल, शिला०युक्त } )
 		
 		return
 	}
 	
-	if (! cache.has(key) ) return;
+	let { काल, शिला०युक्त } = pistonData.get( मूल )
 	
-	let { tick, hasBlocks } = cache.get(key)
-	let tickDifference = currentTick - tick
+	if (! (काल && शिला०युक्त) ) return;
 	
-	if (tickDifference <= 4 && hasBlocks) bpaEventData.cancel = true;
+	let कालशेष = वर्तमान०काल०गण - काल
 	
-	cache.delete(key)
+	if (कालशेष <= 4 && शिला०युक्त) दत्तांशः.cancel = true;
 	
-	} catch (error) {
-		console.log(error)
-		console.log(error.stack)
-		
-		console.warn(error)
-		console.warn(error.stack)
-	}
-})
-
-
+	pistonData.delete(मूल)
+	
+}
 
