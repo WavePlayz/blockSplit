@@ -4,7 +4,7 @@
 	"header": {
 		"name": "BlockSplit by WavePlayz",
 		"description": "v1.18.10.00-s-0.1.0\n- Twitter: itsMrGhost\n- Discord: WavePlayz#7915",
-		"uuid": "c36b1fe0-780a-421c-ad79-f76f82c92d8b",
+		"uuid": "c36b1fe0-782a-421c-ad79-f76f82c92d8b",
 		"version": [0, 1, 0],
 		"developer" : "waveplayz",
 		"min_engine_version": [1, 18, 10 ]
