@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'Version'
+        description: 'Version Tag'
         required: true
-        default: 'vX.X.X.X-X-X.X.X'
+        default: 'v'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -20,14 +20,10 @@ jobs:
         type: 'zip'
         filename: 'BlockSplit.mcpack'
         exclusions: '*.git* /*node_modules/* .editorconfig'
-
-    - name: Get the version
-      id: get_version
-      run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
     
     - name: Upload Release
       uses: ncipollo/release-action@v1
       with:
-        artifacts: "BlockSplit.mcpack"
+        artifacts: 'BlockSplit#' + '${{ github.event.inputs.version }}' + '.mcpack'
         tag: '${{ github.event.inputs.version }}'
         token: ${{ secrets.GITHUB_TOKEN }}
