@@ -1,7 +1,17 @@
-# blockSplit 
-`v1.18.10.00` `s` `0.1.0`  
+# [blockSplit](/)
 
-Addon which allow sticky piston to split block like in java edition.
+`v118.10.00` `0.0.1`  
+
+Addon which allow sticky pistons to leave block, just like java edition.
 
 [![MCPACK](https://github.com/WavePlayz/blockSplit/actions/workflows/pack.yml/badge.svg)](https://github.com/WavePlayz/blockSplit/actions/workflows/pack.yml)
 
+
+
+
+### prayog
+१ Download and import addon  
+२ Go to "*world's*" setting  
+३ Enable `The Gametest Framework`  
+४ Add the addon  
+५ Join and enjoy  
