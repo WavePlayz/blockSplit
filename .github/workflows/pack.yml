@@ -26,9 +26,11 @@ jobs:
     - name: Set variables
       run: |
         VERSION=$(cat VERSION)
+        NAME="REPO" + "_" + $VERSION"
+        echo $REPO
+        echo $env.REPO
         echo "VERSION=$VERSION" >> $GITHUB_ENV
-        NAME="$REPO_$VERSION"
-        echo "NAME=$NAME_$VERSION" >> $GITHUB_ENV
+        echo "NAME=$NAME" >> $GITHUB_ENV
 
     
     - name: Archive Release
