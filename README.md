@@ -1,4 +1,4 @@
-# [blockSplit](/releases)
+# [blockSplit](./releases)
 
 `v118.10.00` `0.0.1`  
 
