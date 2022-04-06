@@ -1,4 +1,4 @@
-# [blockSplit](https://github.com/WavePlayz/blockSplit/releases/latest/)
+# [blockSplit](https://github.com/WavePlayz/blockSplit/releases/)
 
 `v118.10.00` `0.0.1`  
 
