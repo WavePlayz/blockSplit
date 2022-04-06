@@ -49,5 +49,5 @@ jobs:
         artifacts: '${{ env.NAME }}'
         name: '${{ env.REPO }}'
         tag: '${{ env.VERSION }}'
-        body: 'CHANGELOG.md'
+        bodyFile: 'CHANGELOG.md'
         token: ${{ secrets.GITHUB_TOKEN }}
