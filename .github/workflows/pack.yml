@@ -47,4 +47,5 @@ jobs:
         artifacts: '${{ env.NAME }}'
         name: '${{ env.REPO }}'
         tag: '${{ env.VERSION }}'
+        body: '${{ env.REPO }} \n${{ env.VERSION }} \n${{ env.CHANGELOG }}'
         token: ${{ secrets.GITHUB_TOKEN }}
