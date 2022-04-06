@@ -25,9 +25,8 @@ jobs:
     - name: Set variables
       run: |
         VERSION=$(cat VERSION)
-        NAME="$REPO $VERSION"
-        echo $REPO
-        echo $env.REPO
+        NAME="$REPO_$VERSION.mcpack"
+        echo $NAME
         echo "VERSION=$VERSION" >> $GITHUB_ENV
         echo "NAME=$NAME" >> $GITHUB_ENV
 
