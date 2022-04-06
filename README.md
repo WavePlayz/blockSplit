@@ -8,7 +8,7 @@ Addon which allow sticky pistons to leave block, just like java edition.
 
 
 ### prayog
-१ Download and import addon  
+१ [Download](https://github.com/WavePlayz/blockSplit/releases/latest/) and import addon  
 २ Go to "*world's*" setting  
 ३ Enable `The Gametest Framework`  
 ४ Add the addon  
