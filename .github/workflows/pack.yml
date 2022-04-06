@@ -30,6 +30,10 @@ jobs:
         VERSION=$(cat VERSION)
         echo "VERSION=$VERSION" >> $GITHUB_ENV
         
+        list=(${VERSION//-/ })
+        MCVERSION=${list[0]}
+        echo "MCVERSION=$MCVERSION" >> $GITHUB_ENV
+        
         NAME="${REPO}_$VERSION.mcpack"
         echo "NAME=$NAME" >> $GITHUB_ENV
 
@@ -48,6 +52,6 @@ jobs:
         artifactErrorsFailBuild: true
         artifacts: '${{ env.NAME }}'
         name: '${{ env.REPO }}'
-        tag: '${{ env.VERSION }}'
+        tag: '${{ env.MCVERSION }}'
         bodyFile: 'CHANGELOG.md'
         token: ${{ secrets.GITHUB_TOKEN }}
