@@ -24,10 +24,11 @@ jobs:
     
     - name: Set variables
       run: |
+        CHANGELOG=$(cat CHANGELOG)
+        echo "CHANGELOG=$CHANGELOG" >> $GITHUB_ENV
         VERSION=$(cat VERSION)
-        NAME="$REPO_$VERSION.mcpack"
-        echo $NAME
         echo "VERSION=$VERSION" >> $GITHUB_ENV
+        NAME="${REPO}_$VERSION.mcpack"
         echo "NAME=$NAME" >> $GITHUB_ENV
 
     
@@ -42,6 +43,7 @@ jobs:
       uses: ncipollo/release-action@v1
       with:
         allowUpdates: true
+        artifactErrorsFailBuild: true
         artifacts: '${{ env.NAME }}'
         name: '${{ env.REPO }}'
         tag: '${{ env.VERSION }}'
