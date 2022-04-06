@@ -24,10 +24,12 @@ jobs:
     
     - name: Set variables
       run: |
-        CHANGELOG=$(cat CHANGELOG)
+        CHANGELOG=$(cat CHANGELOG.md)
         echo "CHANGELOG=$CHANGELOG" >> $GITHUB_ENV
+        
         VERSION=$(cat VERSION)
         echo "VERSION=$VERSION" >> $GITHUB_ENV
+        
         NAME="${REPO}_$VERSION.mcpack"
         echo "NAME=$NAME" >> $GITHUB_ENV
 
@@ -47,5 +49,5 @@ jobs:
         artifacts: '${{ env.NAME }}'
         name: '${{ env.REPO }}'
         tag: '${{ env.VERSION }}'
-        body: "${{ env.REPO }} \\n${{ env.VERSION }} \\n${{ env.CHANGELOG }}"
+        body: 'CHANGELOG.md'
         token: ${{ secrets.GITHUB_TOKEN }}
