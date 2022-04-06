@@ -7,24 +7,28 @@ on:
         description: 'Version Tag'
         required: true
         default: 'v'
+env:
+  NAME: '${{ github.event.repository.name }}_${{ github.event.inputs.version }}.mcpack'
+  VERSION: '${{ github.event.inputs.version }}'
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
+    
     steps:
     - uses: actions/checkout@master
+    
     - name: Archive Release
       uses: thedoctor0/zip-release@master
       with:
         type: 'zip'
-        filename: 'pack.mcpack'
+        filename: '$NAME'
         exclusions: '*.git* /*node_modules/* .editorconfig'
     
     - name: Upload Release
       uses: ncipollo/release-action@v1
       with:
-        artifacts: 'pack.mcpack'
-        name: '${{ github.event.repository.name }}_${{ github.event.inputs.version }}.mcpack'
-        tag: '${{ github.event.inputs.version }}'
+        artifacts: '$NAME'
+        name: '$NAME'
+        tag: '$VERSION'
         token: ${{ secrets.GITHUB_TOKEN }}
