@@ -51,7 +51,7 @@ jobs:
         allowUpdates: true
         artifactErrorsFailBuild: true
         artifacts: '${{ env.NAME }}'
-        name: '${{ env.REPO }}'
+        name: '${{ env.NAME }}'
         tag: '${{ env.MCVERSION }}'
         bodyFile: 'CHANGELOG.md'
         token: ${{ secrets.GITHUB_TOKEN }}
