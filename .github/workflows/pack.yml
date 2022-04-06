@@ -1,12 +1,17 @@
 name: MCPACK
 
-on:  
-  workflow_dispatch:
-    inputs:
-      version:
-        description: 'Version Tag'
-        required: true
-        default: 'v'
+on:
+  push:
+    paths:
+      - 'VERSION'
+
+#on:  
+#  workflow_dispatch:
+#    inputs:
+#      version:
+#        description: 'Version Tag'
+#        required: true
+#        default: 'v'
         
 env:
   REPO: '${{ github.event.repository.name }}'
@@ -23,7 +28,7 @@ jobs:
         VERSION=$(cat VERSION)
         echo "VERSION=$VERSION" >> $GITHUB_ENV
         NAME="$REPO_$VERSION"
-        echo "NAME=$NAME" >> $GITHUB_ENV
+        echo "NAME=$NAME_$VERSION" >> $GITHUB_ENV
 
     
     - name: Archive Release
