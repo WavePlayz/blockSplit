@@ -25,7 +25,7 @@ jobs:
     - name: Set variables
       run: |
         VERSION=$(cat VERSION)
-        NAME="REPO" + "_" + $VERSION"
+        NAME="$REPO $VERSION"
         echo $REPO
         echo $env.REPO
         echo "VERSION=$VERSION" >> $GITHUB_ENV
@@ -42,6 +42,7 @@ jobs:
     - name: Upload Release
       uses: ncipollo/release-action@v1
       with:
+        allowUpdates: true
         artifacts: '${{ env.NAME }}'
         name: '${{ env.REPO }}'
         tag: '${{ env.VERSION }}'
