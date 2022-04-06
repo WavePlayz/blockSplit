@@ -18,12 +18,13 @@ jobs:
       uses: thedoctor0/zip-release@master
       with:
         type: 'zip'
-        filename: 'BlockSplit.mcpack'
+        filename: 'pack.mcpack'
         exclusions: '*.git* /*node_modules/* .editorconfig'
     
     - name: Upload Release
       uses: ncipollo/release-action@v1
       with:
-        artifacts: 'BlockSplit (${{ github.event.inputs.version }}).mcpack'
+        artifacts: 'pack.mcpack'
+        name: '${{ github.event.repository.name }}_${{ github.event.inputs.version }}.mcpack'
         tag: '${{ github.event.inputs.version }}'
         token: ${{ secrets.GITHUB_TOKEN }}
